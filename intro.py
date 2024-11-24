@@ -15,6 +15,12 @@ def update():
 
 def on_mouse_down(pos):
 	if alien.collidepoint(pos):
-		print("Touché!!!")
-	else:
-		print("manqué")
+		set_alien_hurt()
+
+def set_alien_hurt():
+	alien.image = 'alien_green_hurt'
+	sounds.eep.play()
+	clock.schedule_unique(set_alien_normal, 0.5)
+
+def set_alien_normal():
+	alien.image = 'alien_green_walk2'
